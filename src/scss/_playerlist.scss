@@ -1,0 +1,41 @@
+@import 'sass-mq';
+@import './variables';
+
+.playlist {
+    padding: 64px 20px 0;
+
+    h4 {
+        color: $white;
+        text-transform: uppercase;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    &__song {
+        font-size: 16px;
+        color: $white;
+        padding: 24px 0 24px 0;
+        border-bottom: 0.5px solid $lightPurple;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+
+    &__btn {
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__img {
+        width: 220px;
+        margin: 28px auto;
+        display: block;
+        border-radius: 120px;
+    }
+}

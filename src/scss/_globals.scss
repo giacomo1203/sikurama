@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400&family=Poppins:wght@600&display=swap');
+@import './variables';
+
+html,
+body {
+    font-family: 'Karla', sans-serif;
+    font-weight: 300;
+    background: $bg;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: $purple;
+    padding: 14px 20px;
+    color: $white;
+    border-radius: 30px;
+    border: none;
+    appearance: none;
+    font-size: 20px;
+}

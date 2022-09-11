@@ -1,0 +1,30 @@
+@import 'sass-mq';
+@import './variables';
+
+.navbar {
+    color: $white;
+    padding: 20px 24px;
+    position: fixed;
+    background-color: $darkPurple;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;;
+    left: 0;
+    right: 0;
+
+    &__back {
+        background: transparent;
+        color: $white;
+        padding: 16px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+    }
+}

@@ -1,0 +1,60 @@
+@import 'sass-mq';
+@import './variables';
+
+.detail {
+    padding: 60px 20px 80px;
+    color: $white;
+
+    &__heading {
+        margin-top: 24px;
+
+        h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+    
+        p {
+            margin: 0;
+            font-size: 14px;
+            color: $lightPurple;
+        }
+    }
+}
+.chord {
+    padding: 24px 0;
+    margin: 16px 0;
+    border-bottom: 0.5px solid $lightPurple;
+    font-size: 12px;
+    font-weight: 400;
+
+    &__numbers {
+        display: flex;
+        height: 60px;
+        align-items: center;
+        overflow: auto;
+        padding: 0 0 12px;
+        justify-content: space-between;
+
+        .arca {
+            margin-bottom: auto;
+        }
+
+        .ira {
+            margin-top: auto;
+        }
+
+        .divider {
+            font-size: 14px;
+            margin: 0 -2px;
+            color: $lightPurple;
+
+            @include mq($from: xsmall, $and: '(orientation: landscape)') {
+                margin: 0 2px;
+            }
+        }
+    }
+
+    &__lyrics {
+        font-style: italic;
+    }
+}
