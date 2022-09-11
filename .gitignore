@@ -214,6 +214,7 @@ Temporary Items
 .DS_*
 **/*.backup.*
 **/*.back.*
+public/
 
 node_modules
 
