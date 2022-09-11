@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 export default function SongDetail(props) {
     // const [idSong, setIdSong] = useState('');
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
     // TODO fetch data from ID
 
     const song = {

@@ -6,10 +6,10 @@ import SongDetail from './components/SongDetail.js';
 import Onboarding from './components/Onboarding.js';
 
 function App() {
-
+  document.title = ".:Sikurama:.";
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={'/siku'}>
         <MainButton />
 
         <Routes>
