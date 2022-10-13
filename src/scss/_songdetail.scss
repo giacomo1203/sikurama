@@ -7,9 +7,13 @@
 
     &__heading {
         margin-top: 24px;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
 
         h2 {
             margin: 0;
+            margin-bottom: 8px;
             font-size: 20px;
         }
     
@@ -18,38 +22,54 @@
             font-size: 14px;
             color: $lightPurple;
         }
+
+        button {
+            font-size: 24px;
+            background: none;
+            appearance: none;
+            border: none;
+            color: white;
+            padding: 0;
+            width: 30px;
+        }
     }
 }
 .chord {
-    padding: 24px 0;
+    padding: 12px 8px;
     margin: 16px 0;
-    border-bottom: 0.5px solid $lightPurple;
+    // border-bottom: 0.5px solid $lightPurple;
     font-size: 12px;
     font-weight: 400;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
 
     &__numbers {
         display: flex;
-        height: 60px;
-        align-items: center;
         overflow: auto;
-        padding: 0 0 12px;
-        justify-content: space-between;
 
-        .arca {
-            margin-bottom: auto;
-        }
+        &>div {
+            display: flex;
+            height: 36px;
+            align-items: center;
+            padding: 0;
+            // justify-content: space-between;
 
-        .ira {
-            margin-top: auto;
-        }
+            .arca {
+                margin-bottom: auto;
+            }
 
-        .divider {
-            font-size: 14px;
-            margin: 0 -2px;
-            color: $lightPurple;
+            .ira {
+                margin-top: auto;
+            }
 
-            @include mq($from: xsmall, $and: '(orientation: landscape)') {
+            .divider {
+                font-size: 14px;
                 margin: 0 2px;
+                color: $lightPurple;
+
+                @include mq($from: xsmall, $and: '(orientation: landscape)') {
+                    margin: 0 2px;
+                }
             }
         }
     }

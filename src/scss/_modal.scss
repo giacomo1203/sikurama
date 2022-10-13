@@ -1,0 +1,36 @@
+@import 'sass-mq';
+@import './variables';
+
+.ReactModal {
+    &__Overlay {
+        background-color: rgba($bg, 0.6) !important;
+        z-index: 99;
+    }
+
+    &__Content {
+        border: 1px solid rgb(204, 204, 204) !important;
+        background: $bg !important;
+        padding: 24px !important;
+        color: $white;
+        inset: 24px !important;
+        border-radius: 12px !important;
+        text-align: center;
+        font-size: 14px;
+        line-height: 16px;
+
+        .close-btn {
+            position: fixed;
+            top: 30px;
+            right: 28px;
+            font-size: 20px;
+            color: $white;
+            background: none;
+            border: none;
+            appearance: none;
+            padding: 0;
+            outline: none;
+            width: 32px;
+            height: 32px;
+        }
+    }
+}

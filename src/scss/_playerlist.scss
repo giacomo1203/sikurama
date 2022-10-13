@@ -25,6 +25,21 @@
         text-transform: capitalize;
     }
 
+    &__detail {
+        display: flex;
+        flex-direction: column;
+
+        div {
+            margin-bottom: 6;
+        }
+        
+        span {
+            font-size: 12px;
+            opacity: .7;
+            font-style: italic;
+        }
+    }
+
     &__btn {
         font-size: 20px;
         display: flex;
