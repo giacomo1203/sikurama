@@ -37,39 +37,50 @@
 .chord {
     padding: 12px 8px;
     margin: 16px 0;
-    // border-bottom: 0.5px solid $lightPurple;
     font-size: 12px;
     font-weight: 400;
-    background: rgba(255,255,255,0.1);
+    background: rgba($white, 0.1);
     border-radius: 12px;
 
     &__numbers {
         display: flex;
         overflow: auto;
 
-        &>div {
-            display: flex;
-            height: 36px;
-            align-items: center;
-            padding: 0;
-            // justify-content: space-between;
+        display: flex;
+        height: 36px;
+        align-items: center;
+        padding: 0;
+        // justify-content: space-between;
 
-            .arca {
-                margin-bottom: auto;
+        .arca {
+            margin-bottom: auto;
+        }
+
+        .ira {
+            margin-top: auto;
+
+            &.paralell {
+                margin-left: -100%;
+            }
+        }
+
+        .divider {
+            font-size: 14px;
+            margin: 0 2px;
+            color: $lightPurple;
+
+            &.parallel {
+                display: none;
+                opacity: 0;
             }
 
-            .ira {
-                margin-top: auto;
+            &.parallel + .ira {
+                transform: translateX(-100%);
+                // margin-left: -15px;
             }
 
-            .divider {
-                font-size: 14px;
+            @include mq($from: xsmall, $and: '(orientation: landscape)') {
                 margin: 0 2px;
-                color: $lightPurple;
-
-                @include mq($from: xsmall, $and: '(orientation: landscape)') {
-                    margin: 0 2px;
-                }
             }
         }
     }
