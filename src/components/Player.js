@@ -3,6 +3,7 @@ import escudo from "../assets/escudo.jpg";
 
 import { useState, useEffect } from "react";
 import React, { useRef } from "react";
+import { trackerEvent } from "./GAnalytics";
 
 export default function Player(props) {
   const audioRef = useRef(null);
@@ -25,7 +26,10 @@ export default function Player(props) {
     audioRef.current[playing ? "play" : "pause"]();
   }, [playing]);
 
-  const toggle = () => setPlaying(!playing);
+  const toggle = () => {
+    trackerEvent('player:' + playing);
+    setPlaying(!playing)
+  };
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
     const seconds = Math.floor(secs % 60);

@@ -5,7 +5,8 @@ import { getPost } from "../api/post.js";
 import Modal from "react-modal";
 import { BiBook } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import '../scss/_modal.scss'
+import '../scss/_modal.scss';
+import { trackerEvent, visitedPage } from "./GAnalytics";
 
 export default function SongDetail(props) {
   // const [idSong, setIdSong] = useState('');
@@ -17,12 +18,15 @@ export default function SongDetail(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    visitedPage(window.location.pathname + window.location.search);
     getPost().then((response) => {
       const filtered = response.find(
         (song) => parseInt(song.id) === parseInt(id)
       );
       setSong(filtered);
+      trackerEvent(song.title);
     });
+    
   }, []);
 
   const splitJumps = (str) => str.split(/\r?\n/).filter((item) => item);

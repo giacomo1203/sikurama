@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import { getPost } from "../api/post.js";
 import Searchbar from "./SearchBar.js";
 import escudo from "../assets/escudo.jpg";
+import { visitedPage } from "./GAnalytics";
 
 export default function PlayerList() {
   const [list, setList] = useState([]);
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
+    visitedPage(window.location.pathname + window.location.search);
     getPost().then((response) => {
       setList(response);
       setFiltered(response);
