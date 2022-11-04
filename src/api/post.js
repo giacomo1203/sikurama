@@ -1,5 +1,27 @@
 const playlist = [
   {
+    id: "0",
+    title: "Torero",
+    author: "D.R.",
+    category: "Huayño",
+    media:
+      "https://simple-testing-demo.s3.us-east-2.amazonaws.com/test_example/torero.mp3",
+    numbers:
+      `4/4\\33/33\\33/22\\22/33\\33
+       33\\33/44\\44/44\\44/55\\55
+       77\\55/55\\45/44\\44/55\\55`,
+    lyrics: `I
+      Buenos días suti tata
+      Buenos días suti mamá
+      
+      Waka mara huajritaspa 
+      Wis wis sitantawa
+
+      En la fiesta de mi pueblo celebramos la corrida
+
+      Torero celebramos la corrida.`,
+  },
+  {
     id: "1",
     title: "Agua Milagro",
     author: "Filiberto Calderón Villasante",
