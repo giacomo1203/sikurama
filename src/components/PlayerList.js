@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getPost } from "../api/post.js";
 import Searchbar from "./SearchBar.js";
 import escudo from "../assets/escudo.jpg";
+import slugify from "../utils/slugify.js";
 import { visitedPage } from "./GAnalytics";
 
 export default function PlayerList() {
@@ -33,7 +34,7 @@ export default function PlayerList() {
       <h4>Reportorio</h4>
       {filtered.map((item) => {
         return (
-          <Link to={`/single/${item.id}`} key={item.id}>
+          <Link to={`/single/${slugify(item.title)}`} key={item.id}>
             <div className="playlist__song">
               <div className="playlist__detail">
                 <div>

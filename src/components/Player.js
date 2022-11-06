@@ -30,6 +30,7 @@ export default function Player(props) {
     trackerEvent('player:' + playing);
     setPlaying(!playing)
   };
+
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
     const seconds = Math.floor(secs % 60);
@@ -40,6 +41,14 @@ export default function Player(props) {
   const setMediaSession = () => {
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata(mediaMetadata);
+
+      navigator.mediaSession.setActionHandler('play', function() {
+        setPlaying(true);
+      });
+
+      navigator.mediaSession.setActionHandler('pause', function() {
+        setPlaying(false);
+      });
     }
   };
 

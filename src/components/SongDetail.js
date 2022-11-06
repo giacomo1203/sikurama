@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import { BiBook } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import '../scss/_modal.scss';
+import slugify from "../utils/slugify.js";
 import { trackerEvent, visitedPage } from "./GAnalytics";
 
 export default function SongDetail(props) {
@@ -21,7 +22,7 @@ export default function SongDetail(props) {
     visitedPage(window.location.pathname + window.location.search);
     getPost().then((response) => {
       const filtered = response.find(
-        (song) => parseInt(song.id) === parseInt(id)
+        (song) => (slugify(song.title)) === (id)
       );
       setSong(filtered);
       trackerEvent(song.title);
@@ -66,15 +67,12 @@ export default function SongDetail(props) {
     });
     return result;
   }
-  
 
-  const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
+  const toggleModal = (action = 'open') => setIsOpen(action === 'open');
 
   return !song ? (
     <h1> Waiting </h1>
   ) : (
-    // <div></div>
     <div className="detail">
       <div className="detail__heading">
         <div>
@@ -82,40 +80,14 @@ export default function SongDetail(props) {
         <p> {song.author} </p>
         </div>
         {song.lyrics.length
-        ? <button onClick={openModal}><BiBook /></button>
+        ? <button onClick={() => toggleModal('open')}><BiBook /></button>
         : ''}
       </div>
       
       {buildChords(song.numbers).map((chord, indexRow) => {
-        let sameTime = false;
-        let firstBlock = chord.indexOf("/") > chord.indexOf("\\") ? "down" : "up";
-        if (chord.indexOf("|") > -1) {
-          firstBlock = 'down';
-          sameTime = true;
-        }
-        // const numbers = chord.split(/[/\\|]/g);
         return (
           <div className="chord" key={indexRow}>
-            <div className="chord__numbers" dangerouslySetInnerHTML={{__html: buildNumbers(chord)}}>
-              {/* {numbers.map((element, index) => {
-                firstBlock = firstBlock === "up" ? "down" : "up";
-                return (
-                  <div key={index}>
-                    <div
-                      className={`${firstBlock === "up" ? "arca" : "ira"} ${sameTime ? 'paralell' : ''}`}
-                    >{element}</div>
-                    {index + 1 !== numbers.length && (
-                      <div
-                        className="divider">
-                        {sameTime ? '|' : firstBlock === "up" ? "\\" : "/"}
-                      </div>
-                    )}
-                  </div>
-                );
-              })} */}
-            </div>
-            {/* <div className="chord__lyrics">🎵 Hola Mundo.</div>
-                <div className="chord__lyrics">🎵 Hola Mundo 2.</div> */}
+            <div className="chord__numbers" dangerouslySetInnerHTML={{__html: buildNumbers(chord)}}></div>
           </div>
         );
       })}
@@ -125,7 +97,7 @@ export default function SongDetail(props) {
         ariaHideApp={false}
         contentLabel="Example Modal"
       >
-        <button className="close-btn" onClick={closeModal}> <AiOutlineClose /> </button>
+        <button className="close-btn" onClick={() => toggleModal('close')}> <AiOutlineClose /> </button>
         <h2> {song.title} </h2> 
         <br />
         <p dangerouslySetInnerHTML={{__html: replaceJumpLine(song.lyrics)}} />
