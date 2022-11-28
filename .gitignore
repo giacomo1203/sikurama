@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/android,xcode,xcodeinjection,node,react,osx
 # Edit at https://www.toptal.com/developers/gitignore?templates=android,xcode,xcodeinjection,node,react,osx
 
+__*.*
+
 ### Android ###
 # Gradle files
 .gradle/
