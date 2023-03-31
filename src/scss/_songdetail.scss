@@ -7,6 +7,7 @@
 
     &__heading {
         margin-top: 24px;
+        margin-bottom: 24px;
         display: flex;
         gap: 16px;
         justify-content: space-between;
@@ -44,20 +45,19 @@
 
     &__numbers {
         display: flex;
+        flex-wrap: wrap;
         overflow: auto;
-
-        display: flex;
-        height: 36px;
+        gap: 20px 0;
         align-items: center;
         padding: 0;
         // justify-content: space-between;
 
         .arca {
-            margin-bottom: auto;
+            margin-bottom: 24px;
         }
 
         .ira {
-            margin-top: auto;
+            margin-top: 24px;
 
             &.paralell {
                 margin-left: -100%;

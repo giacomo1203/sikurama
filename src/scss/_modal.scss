@@ -12,16 +12,21 @@
         background: $bg !important;
         padding: 24px !important;
         color: $white;
-        inset: 24px !important;
+        // inset: 24px !important;
         border-radius: 12px !important;
         text-align: center;
         font-size: 14px;
-        line-height: 16px;
+        // line-height: 16px;
+        // height: auto;
+        inset: auto 24px auto 24px !important;
+        transform: translateY(-50%);
+        top: 50% !important;
+        max-height: 90%;
 
         .close-btn {
             position: fixed;
-            top: 30px;
-            right: 28px;
+            top: 10px;
+            right: 4px;
             font-size: 20px;
             color: $white;
             background: none;
