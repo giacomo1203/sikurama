@@ -23,6 +23,35 @@
         align-items: center;
         text-decoration: none;
         text-transform: capitalize;
+        position: relative;
+
+        &.is-training {
+            padding-left: 24px;
+
+            .tag {
+                display: flex;
+            }
+        }
+
+        .tag {
+            display: none;
+            position: absolute;
+            background: darkred;
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 12px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+
+            span {
+                transform: rotateZ(-90deg);
+            }
+        }
     }
 
     &__detail {

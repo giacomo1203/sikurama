@@ -1,0 +1,25 @@
+@import 'sass-mq';
+@import './variables';
+
+.filtertabs {
+    display: flex;
+    overflow: auto;
+    gap: 8px;
+
+    &__item {
+        padding: 4px 12px;
+        appearance: none;
+        outline: none;
+        border-radius: 7px;
+        background: rgba($black, .5);
+        color: $white;
+        font-size: 12px;
+        border: 1px solid $lightPurple;
+        transition: background 250ms ease-in-out;
+
+        &.is-active {
+            color: $black;
+            background: rgba($white, .75);
+        }
+    }
+}

@@ -6,6 +6,7 @@ import Searchbar from "./SearchBar.js";
 import escudo from "../assets/escudo.jpg";
 import slugify from "../utils/slugify.js";
 import { visitedPage } from "./GAnalytics";
+import FilterTabs from "./FilterTabs.js";
 
 export default function PlayerList() {
   const [list, setList] = useState([]);
@@ -20,7 +21,7 @@ export default function PlayerList() {
   }, []);
 
   const filterList = (query) => {
-    if (!query) setFiltered(list);
+    if (!query) return setFiltered(list);
     setFiltered(
       list.filter(
         (song) => song.title.toLowerCase().indexOf(query.toLowerCase()) > -1
@@ -28,14 +29,25 @@ export default function PlayerList() {
     );
   };
 
+  const filterCategory = (query) => {
+    if (!query || query === "") return setFiltered(list);
+    setFiltered(
+      list.filter(
+        (song) => song.category === query
+      )
+    );
+  };
+
   return (
     <div className="playlist">
       <Searchbar onFilter={filterList} />
+      <FilterTabs onFilter={filterCategory} dataList={list} />
       <h4>Reportorio</h4>
       {filtered.map((item) => {
         return (
           <Link to={`/single/${slugify(item.title)}`} key={item.id}>
-            <div className="playlist__song">
+            <div className={`playlist__song ${item.training ? 'is-training' : ''}`}>
+              <div className="tag"><span>ENSAYO</span></div>
               <div className="playlist__detail">
                 <div>
                   {item.title} ({item.category})

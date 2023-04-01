@@ -6,14 +6,12 @@ const trackerEvent = (label, category="Sikurama") => {
     action: 'click',
     label
   });
-  console.log(trackEvent);
   return trackEvent;
 }
 
 const visitedPage = (url) => {
   if (!url) return;
   const pageView = ReactGA.pageview(url);
-  console.log(url);
   return pageView
 }
 
