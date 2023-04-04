@@ -31,7 +31,10 @@ export default function News() {
                 <span className="number">{dateFormat(newsItem[0]).day}</span>
                 <span>{dateFormat(newsItem[0]).month}</span>
               </div>
-              <span>{newsItem[1]}</span>
+              <div className="playlist__detail">
+                <p>{newsItem[1]}</p>
+                {newsItem[2] && <p>{newsItem[2]}</p>}
+              </div>
             </div>
           );
         })}

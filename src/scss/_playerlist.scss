@@ -83,6 +83,19 @@
         border-radius: 120px;
     }
 
+    &__detail {
+        p {
+            margin: 0;
+            
+        }
+
+        p + p {
+            margin-top: 12px;
+            font-size: 14px;
+            font-style: italic;
+        }
+    }
+
     &__news {
         border-bottom: 1px solid $lightPurple;
         padding: 12px 0;

@@ -1,5 +1,6 @@
 export default function formatDate (date) {
   const arrDate = date.split('/');
+  if (!arrDate) return {};
   if (arrDate.length !== 3) return {};
   const months = [
     'Ene',
