@@ -35,10 +35,11 @@
         }
     }
 }
+
 .chord {
     padding: 12px 8px;
     margin: 16px 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     background: rgba($white, 0.1);
     border-radius: 12px;
@@ -50,7 +51,6 @@
         gap: 20px 0;
         align-items: center;
         padding: 0;
-        // justify-content: space-between;
 
         .arca {
             margin-bottom: 24px;

@@ -14,7 +14,8 @@
     right: 0;
     z-index: 10;
 
-    &__back {
+    &__back,
+    &__notification {
         background: transparent;
         color: $white;
         padding: 16px;
@@ -27,5 +28,10 @@
         justify-content: center;
         align-items: center;
         border: 0;
+    }
+
+    &__notification {
+        left: auto;
+        right: 0;
     }
 }
