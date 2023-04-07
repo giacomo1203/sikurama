@@ -22,6 +22,7 @@ export default function Onboarding(props) {
       <button className="btn" onClick={handleClick}>
         Empecemos
       </button>
+      <small className="onboarding__version">1.3</small>
       <img className="onboarding__logo" src={logo} alt="Sikurama" />
     </div>
   );
