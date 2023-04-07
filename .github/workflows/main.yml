@@ -32,5 +32,7 @@ jobs:
         server: ftp.redes.la
         username: sikuapp@giacomo.one
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
+        dangerous-clean-slate: true
+        server-dir: ./sikuapp/
+        local-dir: ./build/
         
