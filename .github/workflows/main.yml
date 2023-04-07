@@ -33,6 +33,6 @@ jobs:
         username: sikuapp@giacomo.one
         password: ${{ secrets.FTP_PASSWORD }}
         dangerous-clean-slate: true
-        server-dir: ./sikuapp/
+        server-dir: ./
         local-dir: ./build/
         
