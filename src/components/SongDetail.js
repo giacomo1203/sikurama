@@ -28,7 +28,7 @@ export default function SongDetail(props) {
       trackerEvent(song.title);
     });
     
-  }, []);
+  }, [id, song.title]);
 
   const splitJumps = (str) => str.split(/\r?\n/).filter((item) => item);
   const buildChords = (numbers) => splitJumps(numbers) || [];
