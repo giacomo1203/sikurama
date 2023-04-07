@@ -35,16 +35,17 @@
       gtag('config', 'G-HE6GLW3LFJ');
     </script>
 
-    <!-- PushAlert -->
-    <script type="text/javascript">
-      (function(d, t) {
-        var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-        g.src = "https://cdn.pushalert.co/integrate_616ef455d413161ad431355bbd297a69.js";
-        s.parentNode.insertBefore(g, s);
-      }(document, "script"));
+    <!-- OneSignal -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "98f1a4ae-d638-422d-8c94-54ab19785db3",
+        });
+      });
     </script>
-    <!-- End PushAlert -->
+    <!-- End OneSignal -->
 
   </head>
   <body>
