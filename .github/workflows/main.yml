@@ -23,14 +23,14 @@ jobs:
         npm install
         npm run build
     
-    # - name: List output files
-    #   run: find build/ -print
+    - name: List output files
+      run: find build/ -print
       
-    # - name: 📂 Sync files
-    #   uses: SamKirkland/FTP-Deploy-Action@4.2.0
-    #   with:
-    #     server: ftp.redes.la
-    #     username: sikuapp@giacomo.one
-    #     password: ${{ secrets.FTP_PASSWORD }}
-    #     local-dir: build/
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ftp.redes.la
+        username: sikuapp@giacomo.one
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
         
