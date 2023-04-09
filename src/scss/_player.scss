@@ -3,7 +3,6 @@
 
 .player {
     position: fixed;
-    background-color: gray;
     bottom: 0;
     left: 0;
     right: 0;
@@ -12,6 +11,7 @@
     align-items: center;
     padding: 10px 20px;
     background-color: $darkPurple;
+    gap: 20px;
 
     &__btn {
         width: 50px;
@@ -28,15 +28,13 @@
         font-size: 24px;
 
         .play-btn {
-            transform: translateX(1px);
+          transform: translateX(1px);
         }
     }
 
     &__slider {
         display: flex;
         flex-direction: column;
-        padding-left: 20px;
-        padding-left: 20px;
         flex-grow: 1;
     }
 

@@ -1,4 +1,7 @@
 import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
+
+import { FiDownload } from "react-icons/fi";
+
 import escudo from "../assets/escudo.jpg";
 
 import { useState, useEffect } from "react";
@@ -77,6 +80,7 @@ export default function Player(props) {
       <button className="player__btn" onClick={toggle}>
         {playing ? <BsPauseFill /> : <BsFillPlayFill className="play-btn" />}
       </button>
+
       <div className="player__slider">
         <input
           ref={sliderRef}
@@ -95,6 +99,10 @@ export default function Player(props) {
           <span>{calculateTime(duration)}</span>
         </div>
       </div>
+
+      <a href={props.media} className="player__btn" download>
+        <FiDownload />
+      </a>
     </div>
   );
 }

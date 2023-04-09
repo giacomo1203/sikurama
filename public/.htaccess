@@ -1,16 +1,21 @@
-#RewriteEngine On
-#RewriteCond %{HTTPS} off [OR]
-#RewriteCond %{HTTP_HOST} ^www\. [NC]
-#RewriteRule ^(.*)$ https://giacomo.one/$1 [L,R=301]
-
+Options -MultiViews
 RewriteEngine On
-
-# Force HTTPS and non-www domain
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://giacomo.one/$1 [L,R=301]
-
-# Serve index.html for all routes
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.html [L]
+RewriteRule ^ index.html [QSA,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+
+
+<FilesMatch "\.(json)$">
+    <IfModule mod_headers.c>
+        Header add Content-Type "application/json"
+        Header add Access-Control-Allow-Methods "GET,HEAD,POST,PUT,DELETE,OPTIONS"
+        Header add Access-Control-Allow-Headers "Auth-Token,Content-Type"
+        Header add Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>
