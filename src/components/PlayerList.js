@@ -44,9 +44,10 @@ export default function PlayerList() {
       <FilterTabs onFilter={filterCategory} dataList={list} />
       <h4>Reportorio</h4>
       {filtered.map((item) => {
+        if (item.public === "0") return false;
         return (
           <Link to={`/single/${slugify(item.title)}`} key={item.id}>
-            <div className={`playlist__song ${item.training ? 'is-training' : ''}`}>
+            <div className={`playlist__song ${parseInt(item.training) ? 'is-training' : ''}`}>
               <div className="tag"><span>ENSAYO</span></div>
               <div className="playlist__detail">
                 <div>
