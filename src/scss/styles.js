@@ -9,3 +9,4 @@ import './_playerlist.scss';
 import './_player.scss';
 import './_onboarding.scss';
 import './_filtertabs.scss';
+import './_form.scss';

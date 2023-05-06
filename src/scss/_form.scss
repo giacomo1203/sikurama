@@ -1,0 +1,59 @@
+@import 'sass-mq';
+@import './variables';
+
+.form {
+  padding: 60px 20px 80px;
+  color: #FFFFFF;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    input,
+    textarea,
+    select {
+      border-radius: 4px;
+      box-sizing: border-box;
+      display: block;
+      font-size: .9rem;
+      padding: 6px 10px;
+      margin-bottom: 14px;
+      width: 100%;
+      border: 1px solid #fff;
+
+      &[type="submit"] {
+        background: #ec5990;
+        border: 1px solid #ec5990;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        height: 48px;
+        color: #fff;
+        margin: 0;
+      }
+    }
+
+    textarea {
+      line-height: 1.5rem;
+      height: 150px;
+      resize: none;
+    }
+  }
+
+}
+
+.main_btn {
+  text-decoration: none;
+  background: #ec5990;
+  border: 1px solid #ec5990;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: #fff;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 24px;
+  padding: 14px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}

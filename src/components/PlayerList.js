@@ -11,6 +11,7 @@ import FilterTabs from "./FilterTabs.js";
 export default function PlayerList() {
   const [list, setList] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [loged, setLoged] = useState(false);
 
   useEffect(() => {
     visitedPage(window.location.pathname + window.location.search);
@@ -18,6 +19,8 @@ export default function PlayerList() {
       setList(response);
       setFiltered(response);
     });
+
+    setLoged(!!sessionStorage.loged);
   }, []);
 
   const filterList = (query) => {
@@ -38,10 +41,37 @@ export default function PlayerList() {
     );
   };
 
+  let counter = 0;
+  const multiplyTap = (e) => {
+    counter += 1;
+
+    if (counter === 5) {
+      if (loged) {
+        setLoged(false);
+        sessionStorage.clear('loged');
+      } else {
+        const user = prompt("Ingresa usuario:");
+        const pass = prompt("Ingresa password:");
+
+        if (user === 'renzo' && pass === '18x100pre') {
+          // TODO close session
+          setLoged(true);
+          sessionStorage.setItem('loged', true);
+        }
+
+        counter = 0;
+      }
+
+    }
+  }
+
   return (
     <div className="playlist">
       <Searchbar onFilter={filterList} />
       <FilterTabs onFilter={filterCategory} dataList={list} />
+
+      {loged && <Link to={'/form'} className="main_btn">Agregar tema :D</Link>}
+
       <h4>Reportorio</h4>
       {filtered.map((item) => {
         if (item.public === "0") return false;
@@ -62,7 +92,8 @@ export default function PlayerList() {
           </Link>
         );
       })}
-      <img className="playlist__img" src={escudo} alt="Sikuris 18 de julio" />
+
+      <img onClick={multiplyTap} className="playlist__img" src={escudo} alt="Sikuris 18 de julio" />
     </div>
   );
 }

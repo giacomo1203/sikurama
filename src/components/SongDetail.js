@@ -1,7 +1,7 @@
 import Player from "./Player.js";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getPost } from "../api/post.js";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { getPost, deleteSong } from "../api/post.js";
 import Modal from "react-modal";
 import { BiBook } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -14,6 +14,7 @@ export default function SongDetail(props) {
   const { id } = useParams();
   // TODO fetch data from ID
 
+  const navigate = useNavigate();
   const [song, setSong] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -27,7 +28,7 @@ export default function SongDetail(props) {
       setSong(filtered);
       trackerEvent(song.title);
     });
-    
+
   }, [id, song.title]);
 
   const splitJumps = (str) => str.split(/\r?\n/).filter((item) => item);
@@ -37,20 +38,20 @@ export default function SongDetail(props) {
   const createDiv = (className, content) => {
     return `<div class="${className} ${content==='|' ? 'parallel' : ''}">${content}</div>`;
   }
-  
+
   const getBackClassName = (code) => {
     if (code === '|') return 'arca';
     if (code === '/') return 'ira';
     if (code === '\\') return 'arca';
     return 'ira';
   }
-  
+
   const buildNumbers = (numbers) => {
     let html = '';
     let result = '';
     let divider;
     let numbs = numbers.split('')
-  
+
     numbs.forEach((element, index) => {
       if (element==='|' || element==='/' || element==='\\') {
         divider = divider === '|' ? false : element;
@@ -70,6 +71,16 @@ export default function SongDetail(props) {
 
   const toggleModal = (action = 'open') => setIsOpen(action === 'open');
 
+  const removeSong = (id) => {
+    let sureDeleteing  = window.confirm("¿Estás seguro de eliminar esta canción?");
+
+    if (sureDeleteing) {
+      deleteSong(id).then((response) => {
+        if (response) navigate("/home");
+      });
+    }
+  }
+
   return !song ? (
     <h1> Waiting </h1>
   ) : (
@@ -83,7 +94,7 @@ export default function SongDetail(props) {
         ? <button onClick={() => toggleModal('open')}><BiBook /></button>
         : ''}
       </div>
-      
+
       {buildChords(song.numbers).map((chord, indexRow) => {
         return (
           <div className="chord" key={indexRow}>
@@ -91,6 +102,11 @@ export default function SongDetail(props) {
           </div>
         );
       })}
+
+      <Link state={{ song }} to={'/form'} className="main_btn">Editar tema :D</Link>
+
+      <button onClick={() => { removeSong(song.id) }} className="main_btn">Eliminar tema</button>
+
     {song.lyrics.length ?
     <Modal
         isOpen={modalIsOpen}
@@ -98,7 +114,7 @@ export default function SongDetail(props) {
         contentLabel="Example Modal"
       >
         <button className="close-btn" onClick={() => toggleModal('close')}> <AiOutlineClose /> </button>
-        <h2> {song.title} </h2> 
+        <h2> {song.title} </h2>
         <br />
         <p dangerouslySetInnerHTML={{__html: replaceJumpLine(song.lyrics)}} />
       </Modal> : ''}

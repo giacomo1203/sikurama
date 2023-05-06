@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/NavBar'
 import PlayerList from './components/PlayerList.js';
 import News from './components/Notifications';
+import Form from './components/Form';
 import SongDetail from './components/SongDetail.js';
 import Onboarding from './components/Onboarding.js';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/single/:id" element={<SongDetail />} />
           <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </BrowserRouter>
     </>
