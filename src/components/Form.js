@@ -14,7 +14,7 @@ export default function Form() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const tmpSong = location?.state?.song;
+    const tmpSong = location?.state?.song || {};
     if (tmpSong) reset(tmpSong);
   }, []);
 
