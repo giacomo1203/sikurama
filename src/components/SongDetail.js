@@ -14,6 +14,7 @@ export default function SongDetail(props) {
   const { id } = useParams();
   // TODO fetch data from ID
 
+  const [loged, setLoged] = useState(false);
   const navigate = useNavigate();
   const [song, setSong] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function SongDetail(props) {
       trackerEvent(song.title);
     });
 
+    setLoged(!!sessionStorage.loged);
   }, [id, song.title]);
 
   const splitJumps = (str) => str.split(/\r?\n/).filter((item) => item);
@@ -103,10 +105,9 @@ export default function SongDetail(props) {
         );
       })}
 
-    { false && <Link state={{ song }} to={'/form'} className="main_btn">Editar tema :D</Link> }
+    { loged && <Link state={{ song }} to={'/form'} className="main_btn">Editar tema :D</Link> }
+    { loged && <button onClick={() => { removeSong(song.id) }} className="main_btn">Eliminar tema</button> }
 
-      { false && <button onClick={() => { removeSong(song.id) }} className="main_btn">Eliminar tema</button> }
-     
     {song.lyrics.length ?
     <Modal
         isOpen={modalIsOpen}

@@ -10,14 +10,14 @@ export default function Form() {
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [tmpSong, setTmpSong] = useState(location?.state?.song || {});
-
+  const [loged] = useState(sessionStorage.loged);
 
   useEffect(() => {
+    if (!loged) navigate("/home");
     reset(tmpSong);
-  }, [reset, tmpSong]);
+  }, [reset, tmpSong, loged, navigate]);
 
   const onSubmit = (data) => {
-
     if (Object.values(errors).length) return;
     if (isLoading) return;
 
@@ -27,8 +27,8 @@ export default function Form() {
     data.date_creation = formatedDate;
 
     setTmpSong(data);
-
     setIsLoading(true);
+
     if (data.id) {
       editSong(data).then((response) => {
         if (response) navigate("/home");
