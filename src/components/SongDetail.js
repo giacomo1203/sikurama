@@ -103,9 +103,9 @@ export default function SongDetail(props) {
         );
       })}
 
-    <Link state={{ song }} to={'/form'} className="main_btn">Editar tema :D</Link>
+    { false && <Link state={{ song }} to={'/form'} className="main_btn">Editar tema :D</Link> }
 
-      <button onClick={() => { removeSong(song.id) }} className="main_btn">Eliminar tema</button>
+      { false && <button onClick={() => { removeSong(song.id) }} className="main_btn">Eliminar tema</button> }
      
     {song.lyrics.length ?
     <Modal
