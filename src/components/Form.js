@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useForm } from 'react-hook-form';
 import { createSong, editSong } from "../api/post.js";
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,19 +7,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function Form() {
   const location = useLocation();
   const navigate = useNavigate();
-
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
-
   const [isLoading, setIsLoading] = useState(false);
+  const [tmpSong, setTmpSong] = useState(location?.state?.song || {});
+
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const tmpSong = location?.state?.song || {};
-    if (tmpSong) reset(tmpSong);
-  }, []);
-
+    reset(tmpSong);
+  }, [reset, tmpSong]);
 
   const onSubmit = (data) => {
+
     if (Object.values(errors).length) return;
     if (isLoading) return;
 
@@ -28,16 +26,16 @@ export default function Form() {
 
     data.date_creation = formatedDate;
 
+    setTmpSong(data);
+
     setIsLoading(true);
     if (data.id) {
       editSong(data).then((response) => {
-        console.log('Edited====> ', response);
         if (response) navigate("/home");
         setIsLoading(false);
       });
     } else {
       createSong(data).then((response) => {
-        console.log('Created====> ', response);
         if (response) navigate("/home");
         setIsLoading(false);
       });
