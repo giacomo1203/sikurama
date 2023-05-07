@@ -1,6 +1,6 @@
 import Player from "./Player.js";
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getPost, deleteSong } from "../api/post.js";
 import Modal from "react-modal";
 import { BiBook } from "react-icons/bi";
@@ -69,7 +69,7 @@ export default function SongDetail(props) {
     return result;
   }
 
-  const toggleModal = (action = 'open') => setIsOpen(action === 'open');
+  /*const toggleModal = (action = 'open') => setIsOpen(action === 'open');
 
   const removeSong = (id) => {
     let sureDeleteing  = window.confirm("¿Estás seguro de eliminar esta canción?");
@@ -79,7 +79,7 @@ export default function SongDetail(props) {
         if (response) navigate("/home");
       });
     }
-  }
+  }*/
 
   return !song ? (
     <h1> Waiting </h1>
