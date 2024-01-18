@@ -1,4 +1,4 @@
-const path = 'https://giacomo.one/sikuapi/songs';
+const path = 'https://sikuris18dejulio.com/sikuapi/songs';
 
 const getPost = async (id = '') => {
   const paramId = id ? `/${id}` : '';
