@@ -74,7 +74,7 @@ export default function Player(props) {
           setPlayed(event.currentTarget.currentTime);
         }}
       >
-        <source src={`https://docs.google.com/uc?export=download&id=${props.media}`} type="audio/mpeg" />
+        <source src={`${props.media}`} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
       <button className="player__btn" onClick={toggle}>
