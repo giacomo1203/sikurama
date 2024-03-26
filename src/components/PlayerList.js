@@ -15,10 +15,23 @@ export default function PlayerList() {
 
   useEffect(() => {
     visitedPage(window.location.pathname + window.location.search);
-    getPost().then((response) => {
-      setList(response);
-      setFiltered(response);
-    });
+    // getPost().then((response) => { // Testing load local json
+    //   setList(response);
+    //   setFiltered(response);
+    // });
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch('./data/records-03-24.json');
+        const jsonData = await response.json();
+        setList(jsonData);
+        setFiltered(jsonData);
+      } catch (error) {
+        console.error('Error al cargar el archivo JSON:', error);
+      }
+    };
+
+    fetchData();
 
     setLoged(!!sessionStorage.loged);
   }, []);
@@ -53,7 +66,7 @@ export default function PlayerList() {
         const user = prompt("Ingresa usuario:");
         const pass = prompt("Ingresa password:");
 
-        if (user === 'renzo' && pass === '18x100pre') {
+        if (user === 'jozef' && pass === 'jozef.18') {
           // TODO close session
           setLoged(true);
           sessionStorage.setItem('loged', true);
