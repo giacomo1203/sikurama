@@ -1,7 +1,7 @@
 import { FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getPost } from "../api/post.js";
+// import { getPost } from "../api/post.js";
 import Searchbar from "./SearchBar.js";
 import escudo from "../assets/escudo.jpg";
 import slugify from "../utils/slugify.js";
